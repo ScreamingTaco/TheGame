@@ -22,55 +22,108 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({Key key}) : super(key: key);
 
   @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  List<Color> colors = randomColor();
+  
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: AppBar(title: Text("The Game")),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: randomColor(),
+            colors: colors,
             tileMode: TileMode.repeated, // repeats the gradient over the canvas
           ),
         ),
-        child: Center(
-            child: Container(
-          height: MediaQuery.of(context).size.height * .5,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Text(
-                "You just lost the game",
-                style: TextStyle(
+        child: Stack(
+          children: <Widget>[
+            Align(
+                alignment: Alignment(.85, -.85),
+                child: IconButton(
+                  icon: Icon(Icons.menu),
                   color: Colors.white,
-                  fontSize: 38,
-                  fontWeight: FontWeight.w600,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              Text("Broke a __ day streak", //TODO: implent this 
-                  style: TextStyle(
+                  onPressed: _showRules,
+                )),
+            Center(
+                child: Container(
+              height: MediaQuery.of(context).size.height * .5,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Text(
+                    "You just lost the game",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 38,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    "Broke a __ day streak", //TODO: implent this
+                    style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.w500,
-                      ),
-                      ),
-              IconButton(
-                icon: Icon(Icons.share),
-                color: Colors.white,
-                onPressed: () {
-                  Share.share("I just lost the game!\n\nhttps://devpost.com/software/the-game-uesxym", subject: "The Game");
-                },
+                    ),
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.share),
+                    color: Colors.white,
+                    onPressed: () {
+                      Share.share(
+                          "I just lost the game!\n\nhttps://devpost.com/software/the-game-uesxym",
+                          subject: "The Game");
+                    },
+                  ),
+                ],
               ),
-            ],
-          ),
-        )),
+            )),
+          ],
+        ),
       ),
+    );
+  }
+
+  //TODO: consider restyling this
+  _showRules() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text(
+            "Rules",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.w700
+            ),
+          ),
+          content: new Text("1. Everyone is playing The Game\n\n2. You lose when you think about the game\n\n3. When you lose, you need to tell someone",
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w500
+            ),
+          ),
+          backgroundColor: Color(0x90000000),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(10),
+            ),
+          ),
+        );
+      },
     );
   }
 }
