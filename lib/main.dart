@@ -81,8 +81,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     icon: Icon(Icons.share),
                     color: Colors.white,
                     onPressed: () {
-                      Share.share(
-                          "I just lost the game!\n\nhttps://devpost.com/software/the-game-uesxym",
+                      Share.share( //TODO: Add streak into the msg
+                          "I just lost the game after __ days!\n\nhttps://devpost.com/software/the-game-uesxym",
                           subject: "The Game");
                     },
                   ),
