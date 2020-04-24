@@ -1,16 +1,35 @@
-# the_game
+# The Game
 
-A new Flutter project.
+## Rules:
 
-## Getting Started
+1. Everyone is playing the game
+2. You lose when you think about the game
+3. When you lose, you need to announce it somehow
 
-This project is a starting point for a Flutter application.
+## The App
 
-A few resources to get you started if this is your first Flutter project:
+"The Game" is a Flutter app designed to make playing The Game easy. 
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Primary features
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* Helpful reminder that you have lost the game
+* Rules of the game
+* Convenient share button
+
+### Nice Extras:
+
+* Streak counter
+* Record of highest streak
+* Lots of fun color combinations 
+
+## Installation 
+
+Android APK coming soon. In the meantime, 
+
+1. Install Flutter
+2. `git clone https://github.com/ScreamingTaco/TheGame`
+3. `flutter run`
+
+## Future Plans:
+
+* Notifications
