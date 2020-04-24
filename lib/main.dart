@@ -48,7 +48,7 @@ class MyHomePage extends StatelessWidget {
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 38,
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w600,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -56,7 +56,9 @@ class MyHomePage extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
-                      fontWeight: FontWeight.w700)),
+                      fontWeight: FontWeight.w500,
+                      ),
+                      ),
               IconButton(
                 icon: Icon(Icons.share),
                 color: Colors.white,
