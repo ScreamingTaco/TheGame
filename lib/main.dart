@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 
 void main() {
   runApp(MyApp());
@@ -60,7 +61,7 @@ class MyHomePage extends StatelessWidget {
                 icon: Icon(Icons.share),
                 color: Colors.white,
                 onPressed: () {
-                  //TODO: Fill in
+                  Share.share("I just lost the game!\n\nhttps://devpost.com/software/the-game-uesxym", subject: "The Game");
                 },
               ),
             ],
