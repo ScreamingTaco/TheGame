@@ -69,12 +69,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    "Broke a __ day streak", //TODO: implent this
+                    "Broke a __ day streak\nBest: __", //TODO: implent this
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.w500,
                     ),
+                    textAlign: TextAlign.center,
                   ),
                   IconButton(
                     icon: Icon(Icons.share),
