@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
+import 'color.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,7 +34,7 @@ class MyHomePage extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Colors.blue, Colors.green],
+            colors: randomColor(),
             tileMode: TileMode.repeated, // repeats the gradient over the canvas
           ),
         ),
