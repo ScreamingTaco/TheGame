@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'color.dart';
+import 'streak.dart';
 
 void main() {
   runApp(MyApp());
@@ -31,7 +32,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<Color> colors = randomColor();
-  
+  StreakData _streakData = StreakData(0.0, 0.0);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,21 +70,32 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  Text(
-                    "Broke a __ day streak\nBest: __", //TODO: implent this
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    textAlign: TextAlign.center,
+                  FutureBuilder(
+                    future: getStreakData(),
+                    initialData: _streakData,
+                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                      if (snapshot.hasData) {
+                        _streakData.streak = snapshot.data.streak;
+                        _streakData.highScore = snapshot.data.highScore;
+                      }
+                      return Text(
+                        "Broke a ${snapshot.data.streak.round()} day streak\nBest: ${snapshot.data.highScore.round()}", //TODO: implent this
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.center,
+                      );
+                    },
                   ),
                   IconButton(
                     icon: Icon(Icons.share),
                     color: Colors.white,
                     onPressed: () {
-                      Share.share( //TODO: Add streak into the msg
-                          "I just lost the game after __ days!\n\nhttps://devpost.com/software/the-game-uesxym",
+                      Share.share(
+                          //TODO: Add streak into the msg
+                          "I just lost the game after ${_streakData.streak} days!\n\nhttps://devpost.com/software/the-game-uesxym",
                           subject: "The Game");
                     },
                   ),
@@ -106,16 +119,11 @@ class _MyHomePageState extends State<MyHomePage> {
             "Rules",
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.w700
-            ),
+                color: Colors.white, fontSize: 20, fontWeight: FontWeight.w700),
           ),
-          content: new Text("1. Everyone is playing The Game\n\n2. You lose when you think about the game\n\n3. When you lose, you need to tell someone",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w500
-            ),
+          content: new Text(
+            "1. Everyone is playing The Game\n\n2. You lose when you think about the game\n\n3. When you lose, you need to tell someone",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
           ),
           backgroundColor: Color(0x90000000),
           shape: RoundedRectangleBorder(
