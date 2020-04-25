@@ -1,5 +1,7 @@
 # The Game
 
+[Check out the project page](https://devpost.com/software/the-game-uesxym)
+
 ## Rules:
 
 1. Everyone is playing the game
