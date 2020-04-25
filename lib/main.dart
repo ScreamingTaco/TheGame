@@ -95,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       Share.share(
                           //TODO: Add streak into the msg
-                          "I just lost the game after ${_streakData.streak} days!\n\nhttps://devpost.com/software/the-game-uesxym",
+                          "I just lost the game after ${_streakData.streak.round()} days!\n\nhttps://devpost.com/software/the-game-uesxym",
                           subject: "The Game");
                     },
                   ),
