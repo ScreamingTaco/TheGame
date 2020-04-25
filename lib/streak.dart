@@ -30,7 +30,7 @@ Future<StreakData> getStreakData() async {
 Future<DateTime> getLastLogin() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   final lastLogin =
-      DateTime.parse(prefs.getString("last_login") ?? "2020-04-20 09:00:00");
+      DateTime.parse(prefs.getString("last_login") ?? DateTime.now().toString());
   prefs.setString("last_login", DateTime.now().toString());
   return lastLogin;
 }
